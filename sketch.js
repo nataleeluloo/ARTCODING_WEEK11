@@ -1,21 +1,41 @@
+let circleSize, posX, posY, offSet, numShapes, space;
+//this is the array for changing colors
+let myColor = ['#DE8DF2','#F2B8C2','#CCAAF2','#F096DB','#F0A297','#F2B3E4','#DE8DF2','#F2B8C2','#CCAAF2','#F096DB',];
+
+
 function setup() {
-  // Create a canvas that fills the entire browser window
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(400, 400);
+  
+  numShapes = 10;
+  circleSize = width-50;
+  space = circleSize/numShapes;
+  offSet = 10;
+  
+  posX = width/2; //center
+  posY = height/2; //center
+  
 }
 
 function draw() {
-  // Set background to black
-  background(0);
+  background('#FED7DF');
+  
+  //loop
+  for (i=0 ;i < numShapes; i++) {
+    fill(myColor[i]);
+    strokeWeight(3);
+    stroke('white');
+    circle(posX+offSet*i, posY, circleSize-space*i);
+  }
 
-  // Map the mouse position to RGB values for dynamic color changes
-  let r = map(mouseX, 0, width, 0, 255);
-  let g = map(mouseY, 0, height, 0, 255);
-  let b = map(mouseX + mouseY, 0, width + height, 0, 255);
-
-  // Set the fill color of the circle
-  fill(r, g, b);
-  noStroke();
-
-  // Draw a circle in the center of the canvas
-  ellipse(width / 2, height / 2, 200, 200);
+  mysignature();
 }
+
+function mysignature(){
+  textSize(20);
+  strokeWeight(6);
+  stroke('pink');
+  fill('white');
+  text('Natalee Park',width-150, height-30);
+}
+
+
